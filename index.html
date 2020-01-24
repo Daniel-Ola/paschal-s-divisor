@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Paschal's Divisor</title>
+</head>
+<body>
+    <div class="container">
+        <input placeholder="Enter a number" type="number" id="number" />
+        <div id="result" style="margin: 1em;font-weight: bolder;*word-spacing: 5px;">Divisors of </div>
+        <button type="button" id="getVals">Get Divisors</button>
+    </div>
+</body>
+
+
+
+<script>
+    var potentials = [] ;
+    var divisors = [] ;
+
+    // to call the answer with the generate button
+    getVals.addEventListener('click' , function () { 
+        var num = parseInt(number.value) ;
+        potentials = [] ;
+        divisors = [] ;
+        for (let i = 1; i <= 10; i++) {
+            if(num % i == 0){
+                potentials.push(i) ;
+                potentials.push(eval(num/i)) ;
+            }
+        }
+        potentials.forEach(el => {
+            if(divisors.indexOf(el) == -1){
+                divisors.push(el) ;
+            }
+        });
+        divisors.sort(function(a, b){return a-b});
+        console.log(divisors) ;
+        result.innerHTML = 'Divisors of '+num+" includes: "+ divisors ;
+     }) ;
+
+    //  To call the function as you type the number
+     resultSpace = result.innerHTML ;
+     number.addEventListener('keyup' , function(){
+        var num = parseInt(number.value) ;
+        potentials = [] ;
+        divisors = [] ;
+        for (let i = 1; i <= 10; i++) {
+            if(num % i == 0){
+                potentials.push(i) ;
+                potentials.push(eval(num/i)) ;
+            }
+        }
+        potentials.forEach(el => {
+            if(divisors.indexOf(el) == -1){
+                divisors.push(el) ;
+            }
+        });
+        divisors.sort(function(a, b){return a-b});
+        console.log(divisors) ;
+        result.innerHTML = 'Divisors of '+num+" includes: "+ divisors ;
+     }) ;  
+
+
+</script>
+
+</html>
